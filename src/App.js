@@ -9,9 +9,12 @@ class App extends Component {
     super();
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.deleteItem = this.deleteItem.bind(this);
     this.state = {
       text: '',
-      items: [{index: 0, text: 'learn React+Redux'}]
+      items: [{
+        id: Date.now(), text: 'learn React+Redux'
+      }]
     };
   }
 
@@ -22,9 +25,24 @@ class App extends Component {
   handleSubmit(e) {
     e.preventDefault();
     this.setState((prevState) => ({
-        text: '',
-        items: prevState.items.concat({text: this.state.text})
+      text: '',
+      items: prevState.items.concat({
+        id: Date.now(),
+        text: this.state.text
+      })
     }));
+  }
+
+  deleteItem(id) {
+    this.setState((prevState) => {
+      const index = prevState.items.findIndex((item) => item.id === id);
+      const newItems = prevState.items;
+      newItems.splice(index, 1);
+      return {
+        text: prevState.text,
+        items: newItems
+      }
+    });
   }
 
   render() {
@@ -35,7 +53,8 @@ class App extends Component {
           <h2>react-redux-todo</h2>
         </div>
 
-        <TodoList items={this.state.items}/>
+        <TodoList items={this.state.items} deleteItem={this.deleteItem}/>
+
         <form onSubmit={this.handleSubmit}>
           <input onChange={this.handleChange} value={this.state.text}/>
           <button>Add</button>

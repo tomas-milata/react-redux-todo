@@ -1,17 +1,19 @@
 import React from 'react';
 
-const TodoItem = ({text}) => {
-  return <li>{text}</li>
+const TodoItem = ({text, deleteItem}) => {
+  return <li>{text} <button onClick={deleteItem}>x</button></li>
 };
 
-const TodoList = (props) => {
+const TodoList = ({items, deleteItem}) => {
   return (
     <ol>
       {
-        props.items.map(item =>
+        items.map(item =>
           <TodoItem
-            key={item.index}
+            key={item.id}
+            id={item.id}
             text={item.text}
+            deleteItem={() => deleteItem(item.id)}
           />
         )
       }
