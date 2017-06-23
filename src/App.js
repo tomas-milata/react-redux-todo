@@ -1,67 +1,37 @@
-import React, {Component} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types'
 import logo from './logo.svg';
 import './App.css';
-import TodoList from './TodoList';
+import TodoList from './TodoListContainer';
 
-class App extends Component {
+const App = ({items, addTodo}) => {
 
-  constructor(props) {
-    super();
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.deleteItem = this.deleteItem.bind(this);
-    this.state = {
-      text: '',
-      items: [{
-        id: Date.now(), text: 'learn React+Redux'
-      }]
-    };
-  }
+  let input;
 
-  handleChange(e) {
-    this.setState({text: e.target.value});
-  }
+  const addItem = () => {
+    addTodo(input.value)
+    input.value = ''
+  };
 
-  handleSubmit(e) {
-    e.preventDefault();
-    this.setState((prevState) => ({
-      text: '',
-      items: prevState.items.concat({
-        id: Date.now(),
-        text: this.state.text
-      })
-    }));
-  }
-
-  deleteItem(id) {
-    this.setState((prevState) => {
-      const index = prevState.items.findIndex((item) => item.id === id);
-      const newItems = prevState.items;
-      newItems.splice(index, 1);
-      return {
-        text: prevState.text,
-        items: newItems
-      }
-    });
-  }
-
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo"/>
-          <h2>react-redux-todo</h2>
-        </div>
-
-        <TodoList items={this.state.items} deleteItem={this.deleteItem}/>
-
-        <form onSubmit={this.handleSubmit}>
-          <input onChange={this.handleChange} value={this.state.text}/>
-          <button>Add</button>
-        </form>
+  return (
+    <div className="App">
+      <div className="App-header">
+        <img src={logo} className="App-logo" alt="logo"/>
+        <h2>react-redux-todo</h2>
       </div>
-    );
-  }
-}
+
+      <TodoList items={items}/>
+
+
+      <input ref={node => input = node} />
+      <button onClick={addItem}>Add</button>
+    </div>
+  );
+};
 
 export default App;
+
+App.propTypes = {
+  items: PropTypes.array.isRequired,
+  addTodo: PropTypes.func.isRequired
+};

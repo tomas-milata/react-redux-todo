@@ -1,19 +1,17 @@
 import React from 'react';
 
-const TodoItem = ({text, deleteItem}) => {
-  return <li>{text} <button onClick={deleteItem}>x</button></li>
-};
+import TodoListItem from './TodoListItem'
 
-const TodoList = ({items, deleteItem}) => {
+const TodoList = ({items, deleteTodo}) => {
   return (
     <ol>
       {
         items.map(item =>
-          <TodoItem
+          <TodoListItem
             key={item.id}
             id={item.id}
             text={item.text}
-            deleteItem={() => deleteItem(item.id)}
+            deleteItem={() => deleteTodo(item.id)}
           />
         )
       }
