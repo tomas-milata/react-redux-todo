@@ -1,4 +1,4 @@
-import {ADD_TODO, DELETE_TODO} from './ActionTypes';
+import {ADD_TODO, DELETE_TODO, DELETE_ALL_TODOS} from './ActionTypes';
 
 let todoCounter = 0;
 
@@ -11,4 +11,8 @@ export const addTodo = text => ({
 export const deleteTodo = id => ({
   type: DELETE_TODO,
   id
+});
+
+export const deleteAllTodos = () => ({
+  type: DELETE_ALL_TODOS
 });

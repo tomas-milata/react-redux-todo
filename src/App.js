@@ -4,7 +4,7 @@ import logo from './logo.svg';
 import './App.css';
 import TodoList from './TodoListContainer';
 
-const App = ({items, addTodo}) => {
+const App = ({items, addTodo, deleteAllTodos}) => {
 
   let input;
 
@@ -25,6 +25,7 @@ const App = ({items, addTodo}) => {
 
       <input ref={node => input = node} />
       <button onClick={addItem}>Add</button>
+      <button onClick={deleteAllTodos}>Delete All</button>
     </div>
   );
 };

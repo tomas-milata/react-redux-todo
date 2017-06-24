@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux'
 import './App.css';
-import {addTodo} from './Actions';
+import {addTodo, deleteAllTodos} from './Actions';
 import App from "./App";
 
 
@@ -13,7 +13,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addTodo: text => dispatch(addTodo(text))
+    addTodo: text => dispatch(addTodo(text)),
+    deleteAllTodos: () => dispatch(deleteAllTodos())
   }
 };
 

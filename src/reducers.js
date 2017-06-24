@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux';
 
-import {ADD_TODO, DELETE_TODO} from './ActionTypes';
+import {ADD_TODO, DELETE_TODO, DELETE_ALL_TODOS} from './ActionTypes';
 
 const initialState = {
   items: []
@@ -19,6 +19,10 @@ function todo(oldState = initialState, action) {
     case DELETE_TODO:
       return {
         items: oldState.items.filter(item => item.id !== action.id)
+      };
+    case DELETE_ALL_TODOS:
+      return {
+        items: []
       };
 
     default:
