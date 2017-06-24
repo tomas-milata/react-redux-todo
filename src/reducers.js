@@ -10,7 +10,6 @@ const initialState = {
 };
 
 function todo(oldState = initialState, action) {
-  console.log(`setting ${action.filter}`)
   switch (action.type) {
     case ADD_TODO:
       const newItem = {

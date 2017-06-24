@@ -18,9 +18,9 @@ type Props = {
   setFilter: (filter: Filter) => void
 }
 
-const App = ({items, addTodo, deleteAllTodos, completeAllTodos, setFilter}: Props) => {
+const App = ({items, filter, addTodo, deleteAllTodos, completeAllTodos, setFilter}: Props) => {
 
-  let input, filter;
+  let input, filterElement;
 
   const addItem = () => {
     addTodo(input.value);
@@ -42,12 +42,8 @@ const App = ({items, addTodo, deleteAllTodos, completeAllTodos, setFilter}: Prop
       <button onClick={deleteAllTodos}>Delete All</button>
       <button onClick={completeAllTodos}>Complete All</button>
       <select
-        onChange={() => {
-
-          console.log(`new ${filter.value}`)
-          setFilter(filter.value)
-        }}
-        ref={node => filter = node}
+        onChange={() => setFilter(filterElement.value)}
+        ref={node => filterElement = node}
         defaultValue={filter}
       >
         <option value={Filters.all}>* (all)</option>

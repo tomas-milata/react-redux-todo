@@ -12,7 +12,7 @@ const TodoListItem = ({text, done, deleteItem, setDone}: Props) => {
   const toggle = () => setDone(!done);
   return (
     <li>
-      <input type="checkbox" checked={done} onClick={toggle}/>
+      <input type="checkbox" checked={done} onChange={toggle}/>
       {text}
       <button onClick={deleteItem}>x</button>
     </li>
