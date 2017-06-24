@@ -1,15 +1,23 @@
+// @flow
+import type {TodoItem} from './model/TodoItem'
+
 import React from 'react';
-import PropTypes from 'prop-types'
 import logo from './logo.svg';
 import './App.css';
 import TodoList from './TodoListContainer';
 
-const App = ({items, addTodo, deleteAllTodos}) => {
+type Props = {
+  items: Array<TodoItem>,
+  addTodo: (text: string) => void,
+  deleteAllTodos: () => void
+}
+
+const App = ({items, addTodo, deleteAllTodos}: Props) => {
 
   let input;
 
   const addItem = () => {
-    addTodo(input.value)
+    addTodo(input.value);
     input.value = ''
   };
 
@@ -23,7 +31,7 @@ const App = ({items, addTodo, deleteAllTodos}) => {
       <TodoList items={items}/>
 
 
-      <input ref={node => input = node} />
+      <input ref={node => input = node}/>
       <button onClick={addItem}>Add</button>
       <button onClick={deleteAllTodos}>Delete All</button>
     </div>
@@ -31,8 +39,3 @@ const App = ({items, addTodo, deleteAllTodos}) => {
 };
 
 export default App;
-
-App.propTypes = {
-  items: PropTypes.array.isRequired,
-  addTodo: PropTypes.func.isRequired
-};

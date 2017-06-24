@@ -1,8 +1,16 @@
+// @flow
+import type {TodoItem} from './model/TodoItem'
+
 import React from 'react';
 
 import TodoListItem from './TodoListItem'
 
-const TodoList = ({items, deleteTodo}) => {
+type Props = {
+  items: Array<TodoItem>,
+  deleteTodo: (id: number) => void
+}
+
+const TodoList = ({items, deleteTodo}: Props) => {
   return (
     <ol>
       {

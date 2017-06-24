@@ -9,12 +9,15 @@
     "redux": "^3.6.0"
   },
   "devDependencies": {
+    "flow-bin": "^0.48.0",
+    "jest": "^20.0.4",
     "react-scripts": "1.0.7"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "flow": "flow"
   }
 }

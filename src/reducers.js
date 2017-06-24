@@ -1,3 +1,4 @@
+// @flow
 import {combineReducers} from 'redux';
 
 import {ADD_TODO, DELETE_TODO, DELETE_ALL_TODOS} from './ActionTypes';
