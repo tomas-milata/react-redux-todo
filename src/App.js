@@ -9,10 +9,11 @@ import TodoList from './TodoListContainer';
 type Props = {
   items: Array<TodoItem>,
   addTodo: (text: string) => void,
-  deleteAllTodos: () => void
+  deleteAllTodos: () => void,
+  completeAllTodos: () => void
 }
 
-const App = ({items, addTodo, deleteAllTodos}: Props) => {
+const App = ({items, addTodo, deleteAllTodos, completeAllTodos}: Props) => {
 
   let input;
 
@@ -34,6 +35,7 @@ const App = ({items, addTodo, deleteAllTodos}: Props) => {
       <input ref={node => input = node}/>
       <button onClick={addItem}>Add</button>
       <button onClick={deleteAllTodos}>Delete All</button>
+      <button onClick={completeAllTodos}>Complete All</button>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 // @flow
 import {combineReducers} from 'redux';
 
-import {ADD_TODO, DELETE_TODO, DELETE_ALL_TODOS, SET_TODO_DONE} from './ActionTypes';
+import {ADD_TODO, DELETE_TODO, DELETE_ALL_TODOS, SET_TODO_DONE, COMPLETE_ALL_TODOS} from './ActionTypes';
 
 const initialState = {
   items: []
@@ -35,6 +35,10 @@ function todo(oldState = initialState, action) {
     case DELETE_ALL_TODOS:
       return {
         items: []
+      };
+    case COMPLETE_ALL_TODOS:
+      return {
+        items: oldState.items.map(item => ({...item, done: true}))
       };
 
     default:

@@ -1,7 +1,7 @@
 // @flow
 import {connect} from 'react-redux'
 import './App.css';
-import {addTodo, deleteAllTodos} from './Actions';
+import {addTodo, deleteAllTodos, completeAllTodos} from './Actions';
 import App from "./App";
 
 
@@ -14,7 +14,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     addTodo: text => dispatch(addTodo(text)),
-    deleteAllTodos: () => dispatch(deleteAllTodos())
+    deleteAllTodos: () => dispatch(deleteAllTodos()),
+    completeAllTodos: () => dispatch(completeAllTodos()),
   }
 };
 
