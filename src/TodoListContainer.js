@@ -6,7 +6,8 @@ import TodoList from "./TodoList";
 
 const mapStateToProps = state => {
   return {
-    items: state.todo.items
+    items: state.todo.items,
+    filter: state.todo.filter
   }
 };
 

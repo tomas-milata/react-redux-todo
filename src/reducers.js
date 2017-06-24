@@ -1,13 +1,16 @@
 // @flow
 import {combineReducers} from 'redux';
 
-import {ADD_TODO, DELETE_TODO, DELETE_ALL_TODOS, SET_TODO_DONE, COMPLETE_ALL_TODOS} from './ActionTypes';
+import {ADD_TODO, DELETE_TODO, DELETE_ALL_TODOS, SET_TODO_DONE, COMPLETE_ALL_TODOS, SET_FILTER} from './ActionTypes';
+import {Filters} from './model/Filter';
 
 const initialState = {
-  items: []
+  items: [],
+  filter: Filters.all
 };
 
 function todo(oldState = initialState, action) {
+  console.log(`setting ${action.filter}`)
   switch (action.type) {
     case ADD_TODO:
       const newItem = {
@@ -16,10 +19,12 @@ function todo(oldState = initialState, action) {
         done: false
       };
       return {
+        ...oldState,
         items: oldState.items.concat(newItem)
       };
     case SET_TODO_DONE:
       return {
+        ...oldState,
         items: oldState.items.map(item => {
           if (item.id === action.id) {
             return {...item, done: action.done}
@@ -30,15 +35,22 @@ function todo(oldState = initialState, action) {
       };
     case DELETE_TODO:
       return {
+        ...oldState,
         items: oldState.items.filter(item => item.id !== action.id)
       };
     case DELETE_ALL_TODOS:
       return {
+        ...oldState,
         items: []
       };
     case COMPLETE_ALL_TODOS:
       return {
+        ...oldState,
         items: oldState.items.map(item => ({...item, done: true}))
+      };
+    case SET_FILTER:
+      return {
+        ...oldState, filter: action.filter
       };
 
     default:
