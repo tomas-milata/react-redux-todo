@@ -1,8 +1,7 @@
 // @flow
-import React from 'react';
 import {connect} from 'react-redux'
 
-import {deleteTodo} from './Actions';
+import {deleteTodo, setTodoDone} from './Actions';
 import TodoList from "./TodoList";
 
 const mapStateToProps = state => {
@@ -13,7 +12,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    deleteTodo: id => dispatch(deleteTodo(id))
+    deleteTodo: (id: number) => dispatch(deleteTodo(id)),
+    setTodoDone: (id: number) => (done: boolean) => dispatch(setTodoDone(id)(done))
   };
 };
 
