@@ -3,6 +3,11 @@ import type {TodoItem} from './model/TodoItem'
 import type {Filter} from './model/Filter'
 
 import React from 'react';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ContentAdd from 'material-ui/svg-icons/content/add';
+import TextField from 'material-ui/TextField';
+
+
 import logo from './logo.svg';
 import './App.css';
 import TodoList from './TodoListContainer';
@@ -20,9 +25,10 @@ type Props = {
 
 const App = ({items, filter, addTodo, deleteAllTodos, completeAllTodos, setFilter}: Props) => {
 
-  let input, filterElement;
+  let inputTextField, filterElement;
 
   const addItem = () => {
+    const input = inputTextField.input;
     addTodo(input.value);
     input.value = ''
   };
@@ -34,11 +40,14 @@ const App = ({items, filter, addTodo, deleteAllTodos, completeAllTodos, setFilte
         <h2>react-redux-todo</h2>
       </div>
 
+
       <TodoList items={items}/>
 
 
-      <input ref={node => input = node}/>
-      <button onClick={addItem}>Add</button>
+      <TextField ref={node => inputTextField = node}/>
+      <FloatingActionButton onClick={addItem} mini={true}>
+        <ContentAdd />
+      </FloatingActionButton>
       <button onClick={deleteAllTodos}>Delete All</button>
       <button onClick={completeAllTodos}>Complete All</button>
       <select
