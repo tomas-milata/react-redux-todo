@@ -6,6 +6,10 @@ import React from 'react';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import TextField from 'material-ui/TextField';
+import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
+import SelectAll from 'material-ui/svg-icons/content/select-all';
+import CheckboxBlank from 'material-ui/svg-icons/toggle/check-box-outline-blank';
+
 
 
 import logo from './logo.svg';
@@ -33,6 +37,10 @@ const App = ({items, filter, addTodo, deleteAllTodos, completeAllTodos, setFilte
     input.value = ''
   };
 
+  const onFilterChange = (event, value: Filter): void => {
+    setFilter(value);
+  };
+
   return (
     <div className="App">
       <div className="App-header">
@@ -50,14 +58,24 @@ const App = ({items, filter, addTodo, deleteAllTodos, completeAllTodos, setFilte
       </FloatingActionButton>
       <button onClick={deleteAllTodos}>Delete All</button>
       <button onClick={completeAllTodos}>Complete All</button>
-      <select
-        onChange={() => setFilter(filterElement.value)}
-        ref={node => filterElement = node}
-        defaultValue={filter}
+      <RadioButtonGroup
+        name="visibilityFilter"
+        onChange={onFilterChange}
+        defaultSelected={filter}
       >
-        <option value={Filters.all}>* (all)</option>
-        <option value={Filters.incomplete}>&#x2610; (incomplete)</option>
-      </select>
+        <RadioButton
+          value={Filters.all}
+          label="Show all"
+          checkedIcon={<SelectAll style={{color: '#F44336'}}/>}
+          uncheckedIcon={<SelectAll />}
+        />
+        <RadioButton
+          value={Filters.incomplete}
+          label="Show incomplete"
+          checkedIcon={<CheckboxBlank style={{color: '#F44336'}}/>}
+          uncheckedIcon={<CheckboxBlank />}
+        />
+      </RadioButtonGroup>
     </div>
   );
 };
