@@ -5,6 +5,8 @@ import type {Filter} from './model/Filter'
 import React from 'react';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
+import DeleteSweep from 'material-ui/svg-icons/content/delete-sweep';
+import DoneAll from 'material-ui/svg-icons/action/done-all';
 import TextField from 'material-ui/TextField';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import SelectAll from 'material-ui/svg-icons/content/select-all';
@@ -29,7 +31,7 @@ type Props = {
 
 const App = ({items, filter, addTodo, deleteAllTodos, completeAllTodos, setFilter}: Props) => {
 
-  let inputTextField, filterElement;
+  let inputTextField;
 
   const addItem = () => {
     const input = inputTextField.input;
@@ -53,11 +55,15 @@ const App = ({items, filter, addTodo, deleteAllTodos, completeAllTodos, setFilte
 
 
       <TextField ref={node => inputTextField = node}/>
-      <FloatingActionButton onClick={addItem} mini={true}>
+      <FloatingActionButton onClick={addItem}>
         <ContentAdd />
       </FloatingActionButton>
-      <button onClick={deleteAllTodos}>Delete All</button>
-      <button onClick={completeAllTodos}>Complete All</button>
+      <FloatingActionButton mini={true} secondary={true} onClick={deleteAllTodos}>
+        <DeleteSweep/>
+      </FloatingActionButton>
+      <FloatingActionButton mini={true} secondary={true} onClick={completeAllTodos}>
+        <DoneAll/>
+      </FloatingActionButton>
       <RadioButtonGroup
         name="visibilityFilter"
         onChange={onFilterChange}
