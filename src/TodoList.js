@@ -4,7 +4,6 @@ import type {Filter} from './model/Filter'
 
 import React from 'react';
 import {List} from 'material-ui/List';
-import Paper from 'material-ui/Paper';
 
 
 import TodoListItem from './TodoListItem'
@@ -31,21 +30,19 @@ const TodoList = ({items, deleteTodo, setTodoDone, filter}: Props) => {
   };
 
   return (
-    <Paper>
-      <List>
-        {
-          items.filter(item => filterItem(item)).map(item =>
-            <TodoListItem
-              key={item.id}
-              text={item.text}
-              done={item.done}
-              setDone={(done) => setTodoDone(item.id)(done)}
-              deleteItem={() => deleteTodo(item.id)}
-            />
-          )
-        }
-      </List>
-    </Paper>
+    <List>
+      {
+        items.filter(item => filterItem(item)).map(item =>
+          <TodoListItem
+            key={item.id}
+            text={item.text}
+            done={item.done}
+            setDone={(done) => setTodoDone(item.id)(done)}
+            deleteItem={() => deleteTodo(item.id)}
+          />
+        )
+      }
+    </List>
   );
 };
 
