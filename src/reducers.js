@@ -12,11 +12,7 @@ import {
 import { Filters } from "./model/Filter";
 
 const initialState = {
-  items: Array.from(Array(20).keys()).map(i => ({
-    id: i,
-    text: "asdasdas",
-    done: false
-  })),
+  items: [],
   filter: Filters.all
 };
 
