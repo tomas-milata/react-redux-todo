@@ -56,17 +56,16 @@ class TodoList extends React.Component {
           overflowY: "scroll"
         }}
       >
-        {items.filter(item => filterItem(item)).map(item =>
-          <div>
+        {items
+          .filter(item => filterItem(item))
+          .map(item =>
             <TodoListItem
-              key={item.id}
               text={item.text}
               done={item.done}
               setDone={done => setTodoDone(item.id)(done)}
               deleteItem={() => deleteTodo(item.id)}
             />
-          </div>
-        )}
+          )}
       </List>
     );
   }
