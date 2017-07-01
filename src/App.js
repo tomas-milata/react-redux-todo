@@ -38,22 +38,26 @@ const App = ({ items, addTodo }: Props) => {
       <div
         style={{
           display: "flex",
-          justifyContent: 'space-between',
+          justifyContent: "space-between",
           alignItems: "center",
-          padding: '32px'
+          padding: "32px"
         }}
       >
         <TextField
           ref={node => (inputTextField = node)}
+          onKeyPress={ev => {
+            if (ev.key === "Enter") {
+              addItem()
+            }
+          }}
+          autoFocus={true}
           hintText="Enter you note"
           style={{
             flex: 1,
-            margin: '0 16px'
+            margin: "0 16px"
           }}
         />
-        <FloatingActionButton
-          onClick={addItem}
-        >
+        <FloatingActionButton onClick={addItem}>
           <ContentAdd />
         </FloatingActionButton>
       </div>
