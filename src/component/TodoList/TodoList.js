@@ -3,6 +3,7 @@ import type { TodoItem } from "../../model/TodoItem";
 import type { Filter } from "../../model/Filter";
 
 import React from "react";
+import ReactDOM from "react-dom";
 import { List } from "material-ui/List";
 
 import TodoListItem from "../TodoListItem";
@@ -15,37 +16,60 @@ type Props = {
   setTodoDone: (id: number) => (done: boolean) => void
 };
 
-const TodoList = ({ items, deleteTodo, setTodoDone, filter }: Props) => {
-  const filterItem = (item: TodoItem): boolean => {
-    switch (filter) {
-      case Filters.all:
-        return true;
-      case Filters.incomplete:
-        return !item.done;
-      default:
-        return true;
+class TodoList extends React.Component {
+  props: Props;
+  list: any;
+
+  scrollToBottom = () => {
+    const items = ReactDOM.findDOMNode(this.list).children;
+    if (items.length > 0) {
+      items[items.length - 1].scrollIntoView();
     }
   };
 
-  return (
-    <List
-      style={{
-        overflowY: "scroll"
-      }}
-    >
-      {items.filter(item => filterItem(item)).map(item =>
-        <div>
-          <TodoListItem
-            key={item.id}
-            text={item.text}
-            done={item.done}
-            setDone={done => setTodoDone(item.id)(done)}
-            deleteItem={() => deleteTodo(item.id)}
-          />
-        </div>
-      )}
-    </List>
-  );
-};
+  componentDidUpdate(prevProps: Props, prevState) {
+    if (this.props.items.length > prevProps.items.length) {
+      this.scrollToBottom();
+    }
+  }
+
+  render() {
+    const { items, deleteTodo, setTodoDone, filter } = this.props;
+
+    const filterItem = (item: TodoItem): boolean => {
+      switch (filter) {
+        case Filters.all:
+          return true;
+        case Filters.incomplete:
+          return !item.done;
+        default:
+          return true;
+      }
+    };
+
+    return (
+      <List
+        ref={node => {
+          this.list = node;
+        }}
+        style={{
+          overflowY: "scroll"
+        }}
+      >
+        {items.filter(item => filterItem(item)).map(item =>
+          <div>
+            <TodoListItem
+              key={item.id}
+              text={item.text}
+              done={item.done}
+              setDone={done => setTodoDone(item.id)(done)}
+              deleteItem={() => deleteTodo(item.id)}
+            />
+          </div>
+        )}
+      </List>
+    );
+  }
+}
 
 export default TodoList;
