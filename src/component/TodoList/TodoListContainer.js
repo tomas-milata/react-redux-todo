@@ -1,7 +1,7 @@
 // @flow
 import {connect} from 'react-redux'
 
-import {deleteTodo, setTodoDone} from './Actions';
+import {deleteTodo, setTodoDone} from '../../Actions';
 import TodoList from "./TodoList";
 
 const mapStateToProps = state => {

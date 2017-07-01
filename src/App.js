@@ -7,7 +7,7 @@ import TextField from "material-ui/TextField";
 import Paper from "material-ui/Paper";
 import FloatingActionButton from "material-ui/FloatingActionButton";
 
-import TodoList from "./TodoListContainer";
+import TodoList from "./component/TodoList";
 import TodoToolbar from "./component/TodoToolbar";
 
 import "./App.css";
