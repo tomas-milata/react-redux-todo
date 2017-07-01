@@ -1,23 +1,23 @@
 // @flow
-import type { Filter } from './model/Filter';
+import type { Filter } from "./model/Filter";
 
-import React from 'react';
-import { Toolbar, ToolbarGroup } from 'material-ui/Toolbar';
-import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import SelectAll from 'material-ui/svg-icons/content/select-all';
-import CheckboxBlank from 'material-ui/svg-icons/toggle/check-box-outline-blank';
-import DeleteSweep from 'material-ui/svg-icons/content/delete-sweep';
-import DoneAll from 'material-ui/svg-icons/action/done-all';
+import React from "react";
+import { Toolbar, ToolbarGroup } from "material-ui/Toolbar";
+import { RadioButton, RadioButtonGroup } from "material-ui/RadioButton";
+import FloatingActionButton from "material-ui/FloatingActionButton";
+import SelectAll from "material-ui/svg-icons/content/select-all";
+import CheckboxBlank from "material-ui/svg-icons/toggle/check-box-outline-blank";
+import DeleteSweep from "material-ui/svg-icons/content/delete-sweep";
+import DoneAll from "material-ui/svg-icons/action/done-all";
+import IconButton from 'material-ui/IconButton';
 
-import { Filters } from './model/Filter';
-
+import { Filters } from "./model/Filter";
 
 type Props = {
   filter: Filter,
   setFilter: (filter: Filter) => void,
   deleteAllTodos: () => void,
-  completeAllTodos: () => void,
+  completeAllTodos: () => void
 };
 
 export const TodoToolbar = (props: Props) => {
@@ -51,21 +51,16 @@ export const TodoToolbar = (props: Props) => {
         </RadioButtonGroup>
       </ToolbarGroup>
       <ToolbarGroup>
-        <FloatingActionButton
-          mini={true}
-          secondary={true}
+        <IconButton
           onClick={deleteAllTodos}
-          style={{ marginRight: "8px" }}
         >
           <DeleteSweep />
-        </FloatingActionButton>
-        <FloatingActionButton
-          mini={true}
-          secondary={true}
+        </IconButton>
+        <IconButton
           onClick={completeAllTodos}
         >
           <DoneAll />
-        </FloatingActionButton>
+        </IconButton>
       </ToolbarGroup>
     </Toolbar>
   );
