@@ -28,7 +28,9 @@ export const TodoToolbar = (props: Props) => {
   };
 
   return (
-    <Toolbar>
+    <Toolbar style={{
+      flex: 'none'
+    }}>
       <ToolbarGroup>
         <RadioButtonGroup
           name="visibilityFilter"
