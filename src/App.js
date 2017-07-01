@@ -40,7 +40,8 @@ const App = ({ items, addTodo }: Props) => {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          padding: "32px"
+          padding: "32px 16px",
+          flex: 'none'
         }}
       >
         <TextField
