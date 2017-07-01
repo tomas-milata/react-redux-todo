@@ -1,5 +1,5 @@
 // @flow
-import type { Filter } from "./model/Filter";
+import type { Filter } from "../../model/Filter";
 
 import React from "react";
 import { Toolbar, ToolbarGroup } from "material-ui/Toolbar";
@@ -11,7 +11,7 @@ import DeleteSweep from "material-ui/svg-icons/content/delete-sweep";
 import DoneAll from "material-ui/svg-icons/action/done-all";
 import IconButton from 'material-ui/IconButton';
 
-import { Filters } from "./model/Filter";
+import { Filters } from "../../model/Filter";
 
 type Props = {
   filter: Filter,

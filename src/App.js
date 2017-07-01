@@ -7,9 +7,8 @@ import TextField from "material-ui/TextField";
 import Paper from "material-ui/Paper";
 import FloatingActionButton from "material-ui/FloatingActionButton";
 
-import logo from "./logo.svg";
 import TodoList from "./TodoListContainer";
-import TodoToolbar from "./TodoToolbarContainer";
+import TodoToolbar from "./component/TodoToolbar";
 
 import "./App.css";
 
@@ -41,14 +40,14 @@ const App = ({ items, addTodo }: Props) => {
           justifyContent: "space-between",
           alignItems: "center",
           padding: "32px 16px",
-          flex: 'none'
+          flex: "none"
         }}
       >
         <TextField
           ref={node => (inputTextField = node)}
           onKeyPress={ev => {
             if (ev.key === "Enter") {
-              addItem()
+              addItem();
             }
           }}
           autoFocus={true}

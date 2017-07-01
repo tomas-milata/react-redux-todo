@@ -1,8 +1,8 @@
 // @flow
-import type { Filter } from "./model/Filter";
+import type { Filter } from "../../model/Filter";
 
 import { connect } from "react-redux";
-import { deleteAllTodos, completeAllTodos, setFilter } from "./Actions";
+import { deleteAllTodos, completeAllTodos, setFilter } from "../../Actions";
 import { TodoToolbar } from "./TodoToolbar";
 
 const mapStateToProps = state => {
