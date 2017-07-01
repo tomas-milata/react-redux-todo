@@ -16,9 +16,11 @@ type Props = {
 const TodoListItem = ({ text, done, deleteItem, setDone }: Props) => {
   const toggle = () => setDone(!done);
   return (
-    <Paper style={{
-      margin: '8px'
-    }}>
+    <Paper
+      style={{
+        margin: "8px"
+      }}
+    >
       <ListItem
         leftCheckbox={<Checkbox checked={done} onClick={toggle} />}
         primaryText={text}

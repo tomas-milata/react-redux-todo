@@ -1,24 +1,22 @@
 // @flow
-import {connect} from 'react-redux'
+import { connect } from "react-redux";
 
-import {deleteTodo, setTodoDone} from '../../Actions';
+import { deleteTodo, setTodoDone } from "../../Actions";
 import TodoList from "./TodoList";
 
 const mapStateToProps = state => {
   return {
     items: state.todo.items,
     filter: state.todo.filter
-  }
+  };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     deleteTodo: (id: number) => dispatch(deleteTodo(id)),
-    setTodoDone: (id: number) => (done: boolean) => dispatch(setTodoDone(id)(done))
+    setTodoDone: (id: number) => (done: boolean) =>
+      dispatch(setTodoDone(id)(done))
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(TodoList);
+export default connect(mapStateToProps, mapDispatchToProps)(TodoList);

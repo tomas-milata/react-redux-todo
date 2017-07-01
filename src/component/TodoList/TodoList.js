@@ -28,9 +28,11 @@ const TodoList = ({ items, deleteTodo, setTodoDone, filter }: Props) => {
   };
 
   return (
-    <List style={{
-              overflowY: "scroll"
-            }}>
+    <List
+      style={{
+        overflowY: "scroll"
+      }}
+    >
       {items.filter(item => filterItem(item)).map(item =>
         <div>
           <TodoListItem

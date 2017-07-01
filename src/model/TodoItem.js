@@ -1,7 +1,3 @@
 // @flow
 
-export type TodoItem = {
-  id: number,
-  text: string,
-  done: boolean
-}
+export type TodoItem = { id: number, text: string, done: boolean };
