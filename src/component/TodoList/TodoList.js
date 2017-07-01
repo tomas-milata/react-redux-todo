@@ -5,7 +5,7 @@ import type { Filter } from "../../model/Filter";
 import React from "react";
 import { List } from "material-ui/List";
 
-import TodoListItem from "../../TodoListItem";
+import TodoListItem from "../TodoListItem";
 import { Filters } from "../../model/Filter";
 
 type Props = {
