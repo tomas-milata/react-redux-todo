@@ -4,7 +4,6 @@ import type { Filter } from "../../model/Filter";
 import React from "react";
 import { Toolbar, ToolbarGroup } from "material-ui/Toolbar";
 import { RadioButton, RadioButtonGroup } from "material-ui/RadioButton";
-import FloatingActionButton from "material-ui/FloatingActionButton";
 import SelectAll from "material-ui/svg-icons/content/select-all";
 import CheckboxBlank from "material-ui/svg-icons/toggle/check-box-outline-blank";
 import DeleteSweep from "material-ui/svg-icons/content/delete-sweep";

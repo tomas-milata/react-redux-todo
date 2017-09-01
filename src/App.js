@@ -4,7 +4,6 @@ import type { TodoItem } from "./model/TodoItem";
 import React from "react";
 import ContentAdd from "material-ui/svg-icons/content/add";
 import TextField from "material-ui/TextField";
-import Paper from "material-ui/Paper";
 import FloatingActionButton from "material-ui/FloatingActionButton";
 
 import TodoList from "./component/TodoList";

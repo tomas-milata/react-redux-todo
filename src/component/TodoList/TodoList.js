@@ -27,7 +27,7 @@ class TodoList extends React.Component {
     }
   };
 
-  componentDidUpdate(prevProps: Props, prevState) {
+  componentDidUpdate(prevProps: Props) {
     if (this.props.items.length > prevProps.items.length) {
       this.scrollToBottom();
     }
@@ -63,7 +63,7 @@ class TodoList extends React.Component {
               key={item.id}
               text={item.text}
               done={item.done}
-              setDone={done => setTodoDone(item.id)(done)}
+              setDone={setTodoDone(item.id)}
               deleteItem={() => deleteTodo(item.id)}
             />
           )}

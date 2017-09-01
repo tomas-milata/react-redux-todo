@@ -12,6 +12,7 @@ import "./index.css";
 import registerServiceWorker from "./registerServiceWorker";
 import injectTapEventPlugin from "react-tap-event-plugin";
 
+
 const store = createStore(rootReducer);
 
 render(
